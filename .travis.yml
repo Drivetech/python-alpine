@@ -16,35 +16,35 @@ env:
       PYTHON_MAJOR_VERSION: '2'
 
 install:
-  - docker build -t "lgatica/python-alpine:$PYTHON_PATCH_VERSION" "$PYTHON_PATCH_VERSION"
-  - docker build -t "lgatica/python-alpine:$PYTHON_PATCH_VERSION-onbuild" "$PYTHON_PATCH_VERSION/onbuild"
-  - docker build -t "lgatica/python-alpine:$PYTHON_PATCH_VERSION-flake8" "$PYTHON_PATCH_VERSION/flake8"
+  - docker build -t "drivetech/python-alpine:$PYTHON_PATCH_VERSION" "$PYTHON_PATCH_VERSION"
+  - docker build -t "drivetech/python-alpine:$PYTHON_PATCH_VERSION-onbuild" "$PYTHON_PATCH_VERSION/onbuild"
+  - docker build -t "drivetech/python-alpine:$PYTHON_PATCH_VERSION-flake8" "$PYTHON_PATCH_VERSION/flake8"
 
 script:
-  - docker run --rm "lgatica/python-alpine:$PYTHON_PATCH_VERSION" python --version
+  - docker run --rm "drivetech/python-alpine:$PYTHON_PATCH_VERSION" python --version
 
 after_success:
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-  - docker tag "lgatica/python-alpine:$PYTHON_PATCH_VERSION" "lgatica/python-alpine:$PYTHON_MINOR_VERSION"
-  - docker tag "lgatica/python-alpine:$PYTHON_PATCH_VERSION" "lgatica/python-alpine:$PYTHON_MAJOR_VERSION"
-  - docker tag "lgatica/python-alpine:$PYTHON_PATCH_VERSION-onbuild" "lgatica/python-alpine:$PYTHON_MINOR_VERSION-onbuild"
-  - docker tag "lgatica/python-alpine:$PYTHON_PATCH_VERSION-onbuild" "lgatica/python-alpine:$PYTHON_MAJOR_VERSION-onbuild"
-  - docker tag "lgatica/python-alpine:$PYTHON_PATCH_VERSION-flake8" "lgatica/python-alpine:$PYTHON_MINOR_VERSION-flake8"
-  - docker tag "lgatica/python-alpine:$PYTHON_PATCH_VERSION-flake8" "lgatica/python-alpine:$PYTHON_MAJOR_VERSION-flake8"
-  - docker push "lgatica/python-alpine:$PYTHON_PATCH_VERSION"
-  - docker push "lgatica/python-alpine:$PYTHON_MINOR_VERSION"
-  - docker push "lgatica/python-alpine:$PYTHON_MAJOR_VERSION"
-  - docker push "lgatica/python-alpine:$PYTHON_PATCH_VERSION-onbuild"
-  - docker push "lgatica/python-alpine:$PYTHON_MINOR_VERSION-onbuild"
-  - docker push "lgatica/python-alpine:$PYTHON_MAJOR_VERSION-onbuild"
-  - docker push "lgatica/python-alpine:$PYTHON_PATCH_VERSION-flake8"
-  - docker push "lgatica/python-alpine:$PYTHON_MINOR_VERSION-flake8"
-  - docker push "lgatica/python-alpine:$PYTHON_MAJOR_VERSION-flake8"
+  - docker tag "drivetech/python-alpine:$PYTHON_PATCH_VERSION" "drivetech/python-alpine:$PYTHON_MINOR_VERSION"
+  - docker tag "drivetech/python-alpine:$PYTHON_PATCH_VERSION" "drivetech/python-alpine:$PYTHON_MAJOR_VERSION"
+  - docker tag "drivetech/python-alpine:$PYTHON_PATCH_VERSION-onbuild" "drivetech/python-alpine:$PYTHON_MINOR_VERSION-onbuild"
+  - docker tag "drivetech/python-alpine:$PYTHON_PATCH_VERSION-onbuild" "drivetech/python-alpine:$PYTHON_MAJOR_VERSION-onbuild"
+  - docker tag "drivetech/python-alpine:$PYTHON_PATCH_VERSION-flake8" "drivetech/python-alpine:$PYTHON_MINOR_VERSION-flake8"
+  - docker tag "drivetech/python-alpine:$PYTHON_PATCH_VERSION-flake8" "drivetech/python-alpine:$PYTHON_MAJOR_VERSION-flake8"
+  - docker push "drivetech/python-alpine:$PYTHON_PATCH_VERSION"
+  - docker push "drivetech/python-alpine:$PYTHON_MINOR_VERSION"
+  - docker push "drivetech/python-alpine:$PYTHON_MAJOR_VERSION"
+  - docker push "drivetech/python-alpine:$PYTHON_PATCH_VERSION-onbuild"
+  - docker push "drivetech/python-alpine:$PYTHON_MINOR_VERSION-onbuild"
+  - docker push "drivetech/python-alpine:$PYTHON_MAJOR_VERSION-onbuild"
+  - docker push "drivetech/python-alpine:$PYTHON_PATCH_VERSION-flake8"
+  - docker push "drivetech/python-alpine:$PYTHON_MINOR_VERSION-flake8"
+  - docker push "drivetech/python-alpine:$PYTHON_MAJOR_VERSION-flake8"
   - if [ "$LATEST" == "latest" ]; then
-    docker tag "lgatica/python-alpine:$PYTHON_PATCH_VERSION" "lgatica/python-alpine:latest";
-    docker tag "lgatica/python-alpine:$PYTHON_PATCH_VERSION-onbuild" "lgatica/python-alpine:onbuild";
-    docker tag "lgatica/python-alpine:$PYTHON_PATCH_VERSION-flake8" "lgatica/python-alpine:flake8";
-    docker push "lgatica/python-alpine:latest";
-    docker push "lgatica/python-alpine:onbuild";
-    docker push "lgatica/python-alpine:flake8";
+    docker tag "drivetech/python-alpine:$PYTHON_PATCH_VERSION" "drivetech/python-alpine:latest";
+    docker tag "drivetech/python-alpine:$PYTHON_PATCH_VERSION-onbuild" "drivetech/python-alpine:onbuild";
+    docker tag "drivetech/python-alpine:$PYTHON_PATCH_VERSION-flake8" "drivetech/python-alpine:flake8";
+    docker push "drivetech/python-alpine:latest";
+    docker push "drivetech/python-alpine:onbuild";
+    docker push "drivetech/python-alpine:flake8";
     fi

@@ -10,5 +10,5 @@ ONBUILD COPY . /usr/src/app
 
 ONBUILD RUN apk add --no-cache --virtual .npm-build-deps nodejs-current-npm git && \
   npm i && npm run build:production && npm cache clean --force && \
-  apk del build-dependencies .npm-build-deps && \
+  apk del .npm-build-deps && \
   rm -rf ~/.node-gyp /tmp/* ~/.cache/bower ~/.npm bower_components node_modules

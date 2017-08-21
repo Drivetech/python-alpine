@@ -8,7 +8,6 @@ ONBUILD RUN pip install --no-cache-dir -r requirements.txt
 
 ONBUILD COPY . /usr/src/app
 
-ONBUILD RUN apk add --no-cache --virtual .npm-build-deps nodejs-current-npm git && \
-  npm i && npm run build && npm cache clean --force && \
+ONBUILD RUN npm i && npm run build && npm cache clean --force && \
   apk del .npm-build-deps && \
   rm -rf ~/.node-gyp /tmp/* ~/.cache/bower ~/.npm bower_components node_modules
